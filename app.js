@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import {getFirestore, addDoc, getDocs, collection} from 'firebase/firestore';
 import log from "loglevel";
 // Set the log level (trace, debug, info, warn, error)
 log.setLevel("info");
@@ -24,7 +25,7 @@ if ('serviceWorker' in navigator) {
     s.register(sw.href, {
         scope: '/INFO-5146-TestPWA/'
     })
-        .then(_ => console.log('Service Worker Registered for scope:', sw.href,
+        .then(() => console.log('Service Worker Registered for scope:', sw.href,
             'with', import.meta.url))
         .catch(err => console.error('Service Worker Error:', err));
 }
@@ -32,7 +33,7 @@ if ('serviceWorker' in navigator) {
 async function renderTasks() {
     var tasks = await getTasksFromFirestore();
     taskList.innerHTML = "";
-    tasks.forEach((task, index) => {
+    tasks.forEach((task) => {
         if (!task.data().completed) {
             const taskItem = document.createElement("li");
             taskItem.id = task.id;
