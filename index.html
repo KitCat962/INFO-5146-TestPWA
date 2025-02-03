@@ -27,15 +27,7 @@
         gtag('config', 'G-5555CD3LNZ');
     </script>
 
-    <script src="app.js"></script>
-    <script>
-        console.log(navigator)
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(reg => console.log('Service Worker Registered'))
-                .catch(err => console.error('Service Worker Error:', err));
-        }
-    </script>
+    <script src="app.js" type="module"></script>
 </body>
 
 </html>
