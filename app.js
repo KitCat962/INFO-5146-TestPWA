@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import log from "loglevel";
+// Set the log level (trace, debug, info, warn, error)
+log.setLevel("info");
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -61,6 +62,19 @@ function sanitizeInput(input) {
     div.textContent = input;
     return div.innerHTML;
 }
+
+// function addTask(task) {
+//     try {
+//         // Log user action
+//         log.info(`Task added: ${task}`);
+//         // Add task to the list
+//         tasks.push(task);
+//         renderTasks();
+//     } catch (error) {
+//         // Log error
+//         log.error("Error adding task", error);
+//     }
+// }
 
 const taskInput = document.getElementById('taskInput');
 const addTaskBtn = document.getElementById('addTaskBtn');
